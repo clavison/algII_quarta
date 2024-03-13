@@ -29,6 +29,7 @@ public class Exercicio3 {
 		        +"Média ímpares: "+ ((double)somaImpares/qtImpares )+ "\n";
 		
 		JOptionPane.showMessageDialog(null, resultado);
+		
 	}
 
 }

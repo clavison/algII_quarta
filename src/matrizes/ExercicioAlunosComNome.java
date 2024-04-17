@@ -6,22 +6,18 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
-public class ExercicioAlunos {
-	
-//Uma turma com N alunos realizou M provas. 
-//Faça um programa que leia todas as notas 
-//obtidas pelos alunos e ao final mostre 
-//a média de cada aluno 
-//(trate os alunos como 1, 2, 3 ...)
+public class ExercicioAlunosComNome {
 	
 	public static void main(String[] args) {
 		DecimalFormat df = new DecimalFormat("#0.00");
 		int n = Integer.parseInt(JOptionPane.showInputDialog("Qtd Alunos:"));
 		int m = Integer.parseInt(JOptionPane.showInputDialog("Qtd Provas:"));
 		double[][] notas = new double[n][m];
+		String[] nomes = new String[n];
 		
 		//LEITURA DE DADOS
 		for(int i=0; i<n; i++) {
+			nomes[i]=JOptionPane.showInputDialog("Nome do aluno(a) "+(i+1));
 			for(int j=0; j<m; j++) {
 				notas[i][j] = new Random().nextDouble()*10;
 			}
@@ -44,12 +40,10 @@ public class ExercicioAlunos {
 				soma += notas[i][j];
 			}
 			double media = soma / m;
-			ret += "Aluno(a) "+(i+1)+"\t"+df.format(media);
+			ret += nomes[i]+"\t"+df.format(media);
 		}
 		
 		JOptionPane.showMessageDialog(null, new JTextArea(ret));
 	}
-		
-		
-	
+
 }

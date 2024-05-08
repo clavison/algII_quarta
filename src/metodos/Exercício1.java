@@ -15,19 +15,20 @@ Deve ser utilizado sub-rotinas.
  */
 public class Exercício1 {
 	
+	static String[] nomes = new String[20];
+	static int[] idades = new int[20];
+	static String[] sexos = new String[20];
+	static int count=0;
+	
 	public static void main(String[] args) {
-		String[] nomes = new String[20];
-		int[] idades = new int[20];
-		String[] sexos = new String[20];
-		int count=0;
 		int op = 0;
 		do {
 			op = menu();
-			if(op == 1) cadastrar(nomes, idades, sexos, count++);
-			if(op == 2) buscarNome(nomes, count);
-			if(op == 3) mediaIdades(idades, sexos, count, "M");
-			if(op == 4) mediaIdades(idades, sexos, count, "F");
-			if(op == 5) qtMulheresMenos18(idades, sexos, count);
+			if(op == 1) cadastrar();
+			if(op == 2) buscarNome();
+			if(op == 3) mediaIdades("M");
+			if(op == 4) mediaIdades("F");
+			if(op == 5) qtMulheresMenos18();
 		}while(op!=6);
 	}
 	
@@ -43,13 +44,14 @@ public class Exercício1 {
 		return Integer.parseInt(JOptionPane.showInputDialog(m));		
 	}
 	
-	private static void cadastrar(String[] nomes, int[] idades, String[] sexos, int pos ) {
-		nomes[pos] = JOptionPane.showInputDialog("Nome:");
-		idades[pos] = Integer.parseInt(JOptionPane.showInputDialog("Idade"));
-		sexos[pos] = JOptionPane.showInputDialog("Sexo (M/F):");
+	private static void cadastrar( ) {
+		nomes[count] = JOptionPane.showInputDialog("Nome:");
+		idades[count] = Integer.parseInt(JOptionPane.showInputDialog("Idade"));
+		sexos[count] = JOptionPane.showInputDialog("Sexo (M/F):");
+		count++;
 	}
 	
-	private static void buscarNome(String[] nomes,int count) {
+	private static void buscarNome() {
 		String nm = JOptionPane.showInputDialog("Buscar por:");
 		String result = "Não encontrado(a)";
 		for (int i=0; i<count; i++) {
@@ -60,7 +62,7 @@ public class Exercício1 {
 		JOptionPane.showMessageDialog(null, result);
 	}
 	
-	private static void mediaIdades(int[] idades, String[] sexos, int count, String sexo) {
+	private static void mediaIdades(String sexo) {
 		int soma = 0;
 		int qtsexo = 0;
 		for(int i=0; i<count; i++) {
@@ -72,7 +74,7 @@ public class Exercício1 {
 		JOptionPane.showMessageDialog(null, "Média "+sexo+": "+soma / qtsexo); 
 	}
 	
-	private static void qtMulheresMenos18(int[] idades, String[] sexos, int count) {
+	private static void qtMulheresMenos18() {
 		int qt = 0;
 		for(int i=0; i<count; i++) {
 			if(sexos[i].equalsIgnoreCase("F") && idades[i]<18) {

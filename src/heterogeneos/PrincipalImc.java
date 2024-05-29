@@ -113,8 +113,8 @@ public class PrincipalImc {
 				menorImc = p;
 			}
 		}
-			msg("Maior IMC" + maiorImc.nome + " IMC: " + formata(calcularImc(maiorImc))+"\n" +
-			    "Menor IMC" + menorImc.nome + " IMC: " + formata(calcularImc(menorImc)));
+		msg("Maior IMC" + maiorImc.nome + " IMC: " + formata(calcularImc(maiorImc))+"\n" +
+			"Menor IMC" + menorImc.nome + " IMC: " + formata(calcularImc(menorImc)));
 	}
 
 }
